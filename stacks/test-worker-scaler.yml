@@ -16,7 +16,7 @@ services:
 
   scaler:
     image: radusimonica/scaler:latest
-    command: java -jar scaler.jar --rabbitHost rabbitmq -q q.request.test -p 5000 --dockerHost tcp://192.168.0.150:2375 --dockerServiceName test_worker --threshold 20 --maxConsumers 20
+    command: java -jar scaler.jar --rabbitHost rabbitmq -q q.request.test -p 5000 --dockerHost tcp://192.168.0.150:2375 --dockerServiceName test_worker --threshold 10 --maxConsumers 20
     environment:
       - RABBITMQ_DEFAULT_USER=$RABBITMQ_DEFAULT_USER
       - RABBITMQ_DEFAULT_PASS=$RABBITMQ_DEFAULT_PASS
