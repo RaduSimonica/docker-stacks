@@ -1,0 +1,4 @@
+FROM jenkins/jenkins:jdk17@sha256:35a533ced9f7ba9af37a9306ee81b5d825b17ac9cecd253650132658d94da461
+USER root
+RUN apt-get update
+RUN curl -sSL https://get.docker.com/ | sh
