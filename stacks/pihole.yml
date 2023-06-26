@@ -8,7 +8,4 @@ services:
     environment:
       TZ: 'Romania/Bucharest'
       WEBPASSWORD: $WEBPASSWORD
-    volumes:
-      - './etc-pihole:/etc/pihole'
-      - './etc-dnsmasq.d:/etc/dnsmasq.d'
     restart: unless-stopped
