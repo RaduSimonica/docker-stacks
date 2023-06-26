@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  pihole:
+    image: pihole/pihole:latest
+    network_mode:
+      'host'
+    environment:
+      TZ: 'Romania/Bucharest'
+      WEBPASSWORD: $WEBPASSWORD
+    volumes:
+      - './etc-pihole:/etc/pihole'
+      - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    restart: unless-stopped
