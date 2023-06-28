@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  api:
+    image: radusimonica/api:latest
+    environment:
+      - SPRING_DATASOURCE_URL=$SPRING_DATASOURCE_URL
+      - SPRING_DATASOURCE_USERNAME=$SPRING_DATASOURCE_USERNAME
+      - SPRING_DATASOURCE_PASSWORD=$SPRING_DATASOURCE_PASSWORD
+    ports:
+      - "8085:8085"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: none
+    networks:
+      - rabbitmq-network
+
+networks:
+  rabbitmq-network:
+    driver: overlay
+    external: true
+    attachable: true
