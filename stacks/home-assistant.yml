@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  homeassistant:
+    container_name: home-assistant
+    image: ghcr.io/home-assistant/home-assistant:2024.10.4
+    restart: unless-stopped
+    ports:
+      - "20820:8123"
+    volumes:
+      - /mnt/Main Pool/home-assistant/configs:/config
+      - /mnt/Main Pool/home-assistant/media:/media
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    environment:
+      - TZ="Europe/Bucharest"
