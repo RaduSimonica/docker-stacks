@@ -1,0 +1,12 @@
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "/mnt/Main Pool/Homarr/configs":/app/data/configs
+      - "/mnt/Main Pool/Homarr/icons":/app/public/icons
+      - "/mnt/Main Pool/Homarr/data":/data
+    ports:
+      - '30010:7575'
