@@ -2,14 +2,18 @@ version: '3.8'
 
 services:
   pihole:
-    image: pihole/pihole:2023.05.1
+    container_name: pihole
+    image: pihole/pihole:2024.07.0
     ports:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp"
-      - "9080:80/tcp"
-      - "9443:443/tcp"
+      - "80:80/tcp"
     environment:
-      TZ: 'Romania/Bucharest'
-      WEBPASSWORD: $WEBPASSWORD
+      TZ: 'Europe/Bucharest'
+      WEBPASSWORD: $PIHOLE_PASSWORD
+      FTLCONF_LOCAL_IPV4: $SERVER_IP
+    volumes:
+      - /mnt/Main Pool/pihole/etc-pihole:/etc/pihole
+      - /mnt/Main Pool/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
     restart: unless-stopped
