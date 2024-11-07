@@ -13,8 +13,8 @@ services:
       - /dev/dri/renderD128:/dev/dri/renderD128
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/Main Pool/frigate/config:/config
-      - /mnt/Main Pool/frigate/media:/media/frigate
+      - /mnt/Main Pool/cams/config:/config
+      - /mnt/Main Pool/cams/media:/media/frigate
       - type: tmpfs
         target: /tmp/cache
         tmpfs:
