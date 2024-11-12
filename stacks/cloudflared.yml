@@ -4,9 +4,4 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflared
     command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
-    deploy:
-      replicas: 4
-      placement:
-        constraints:
-          - node.labels.os == raspberry-pi
     restart: unless-stopped
