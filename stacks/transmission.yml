@@ -15,4 +15,10 @@ services:
       - ${EXT_9091_PORT}:9091
       - ${EXT_51413_PORT_TCP}:51413
       - ${EXT_51414_PORT_UDP}:51413/udp
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.role == worker
+          - node.labels.os == raspberry-pi
     restart: unless-stopped
