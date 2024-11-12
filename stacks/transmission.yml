@@ -9,10 +9,10 @@ services:
       - PGID=1000
       - TZ=Europe/Bucharest
     volumes:
-      - /mnt/Main Pool/transmission:/config
-      - /mnt/Main Pool/downloads:/downloads
+      - ${CONFIG}:/config
+      - ${DOWNLOADS}:/downloads
     ports:
-      - 39091:9091
-      - 51413:51413
-      - 51413:51413/udp
+      - ${EXT_9091_PORT}:9091
+      - ${EXT_51413_PORT_TCP}:51413
+      - ${EXT_51414_PORT_UDP}:51413/udp
     restart: unless-stopped
