@@ -19,6 +19,5 @@ services:
       replicas: 2
       placement:
         constraints:
-          - node.role == worker
           - node.labels.os == raspberry-pi
     restart: unless-stopped
