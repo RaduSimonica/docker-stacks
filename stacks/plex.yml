@@ -9,6 +9,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
       - VERSION=docker
+      - PLEX_CLAIM=${PLEX_CLAIM}
     volumes:
       - /mnt/Main Pool/plex:/config
       - /mnt/Main Pool/downloads:/tv
