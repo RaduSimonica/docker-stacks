@@ -4,6 +4,7 @@ services:
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
+    network: host
     environment:
       - PUID=1000
       - PGID=1000
@@ -11,19 +12,9 @@ services:
       - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM}
     volumes:
-      - /mnt/Main Pool/plex:/config
-      - /mnt/Main Pool/downloads:/tv
-      - /mnt/Main Pool/downloads:/movies
+      - ${CONFIG_PATH}:/config
+      - ${TV_SHOWS_PATH}:/tv
+      - ${MOVIES_PATH}:/movies
     devices:
       - /dev/dri:/dev/dri
-    ports:
-      - 32400:32400
-      - 31900:1900/udp
-      - 35353:5353/udp
-      - 38324:8324
-      - 32410:32410/udp
-      - 32412:32412/udp
-      - 32413:32413/udp
-      - 32414:32414/udp
-      - 32469:32469
     restart: unless-stopped
