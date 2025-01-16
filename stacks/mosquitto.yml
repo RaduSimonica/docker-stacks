@@ -7,9 +7,9 @@ services:
     container_name: mosquitto
     restart: unless-stopped
     ports:
-      - "9883:1883"
+      - "${PORT}:1883"
       - "9001:9001"
     volumes:
-      - /mnt/Main Pool/mqtt/config:/mosquitto/config
-      - /mnt/Main Pool/mqtt/data:/mosquitto/data
-      - /mnt/Main Pool/mqtt/log:/mosquitto/log
+      - ${CONFIG}:/mosquitto/config
+      - ${DATA}:/mosquitto/data
+      - ${LOG}:/mosquitto/log
