@@ -2,29 +2,30 @@ version: "3.9"
 services:
   frigate:
     container_name: frigate
-    restart: unless-stopped
-    image: ghcr.io/blakeblackshear/frigate:0.14.1
     privileged: true
     cap_add:
       - CAP_PERFMON
-    shm_size: "512mb"
+    restart: unless-stopped
+    stop_grace_period: 30s
+    image: ghcr.io/blakeblackshear/frigate:$VERSION
+    shm_size: "1024mb"
     devices:
-      - /dev/bus/usb:/dev/bus/usb
+      - $CORAL_USB:/dev/bus/usb
       - /dev/dri/renderD128:/dev/dri/renderD128
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/Main Pool/cams/config:/config
-      - /mnt/Main Pool/cams/media:/media/frigate
-      - type: tmpfs
+      - $CONFIG:/config
+      - $MEDIA:/media/frigate
+      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
         target: /tmp/cache
         tmpfs:
           size: 2000000000
     ports:
-      - "30971:8971"
-      - "30051:5000" # Internal unauthenticated access. Expose carefully.
-      - "30554:8554" # RTSP feeds
-      - "30555:8555/tcp" # WebRTC over tcp
-      - "30555:8555/udp" # WebRTC over udp
+      - "${PORT}:8971"
+      - "${FREE_PORT}:5000" # Internal unauthenticated access. Expose carefully.
+      - "${RTSP_PORT}:8554" # RTSP feeds
+      - "${WEB_RTC_TCP_PORT}:8555/tcp" # WebRTC over tcp
+      - "${WEB_RTC_UDP_PORT}:8555/udp" # WebRTC over udp
     environment:
       FRIGATE_RTSP_USER: $FRIGATE_RTSP_USER
-      FRIGATE_RTSP_PASSWORD: $FRIGATE_RTSP_PASSWORD
+      FRIGATE_RTSP_PASSWORD: $FRIGATE_PASSWORD}
