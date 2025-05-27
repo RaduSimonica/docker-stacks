@@ -1,6 +1,6 @@
 services:
   mqtt_republish:
-    container_name: mqtt_republish_radu
+    container_name: mqtt_republish
     image: mqtt_republish
     restart: unless-stopped
     volumes:
