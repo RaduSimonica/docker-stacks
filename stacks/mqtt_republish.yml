@@ -1,0 +1,12 @@
+services:
+  mqtt_republish:
+    container_name: mqtt_republish_radu
+    image: mqtt_republish
+    restart: unless-stopped
+    volumes:
+      - ${SETTINGS_FILE_PATH}:devices_settings.json:ro
+    environment:
+      SETTINGS_FILE: "devices_settings.json"
+      MQTT_HOST: ${MQTT_HOST}
+      MQTT_PORT: ${MQTT_PORT}
+      SCHEDULE_MINUTES: ${SCHEDULE_MINUTES}
