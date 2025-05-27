@@ -4,7 +4,7 @@ services:
     image: mqtt_republish
     restart: unless-stopped
     volumes:
-      - ${SETTINGS_FILE_PATH}:devices_settings.json:ro
+      - ${SETTINGS_FILE_PATH}:/app/devices_settings.json:ro
     environment:
       SETTINGS_FILE: "devices_settings.json"
       MQTT_HOST: ${MQTT_HOST}
