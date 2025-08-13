@@ -11,6 +11,7 @@ services:
     devices:
       - $CORAL_USB:/dev/bus/usb
       - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - $CONFIG:/config
