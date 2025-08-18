@@ -10,7 +10,8 @@ services:
       - serverIP=${TDARR_SERVER_IP}
       - serverPort=${TDARR_SERVER_PORT}
     volumes:
-      - ${TDARR_MEDIA_PATH}:/media
+      - ${TDARR_MOVIES_PATH}:/movies
+      - ${TDARR_TV_PATH}:/tv
       - ${TDARR_CONFIG_PATH}:/app/configs
     ports:
       - "${TDARR_NODE_PORT:-8267}:8267"
