@@ -1,0 +1,16 @@
+services:
+  tdarr-node:
+    image: ghcr.io/haveagitgat/tdarr_node:${TDARR_NODE_VERSION:-latest}
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    environment:
+      - nodeID=${TDARR_NODE_ID:-Node1}
+      - serverIP=${TDARR_SERVER_IP}
+      - serverPort=${TDARR_SERVER_PORT}
+    volumes:
+      - ${TDARR_MEDIA_PATH}:/media
+      - ${TDARR_CONFIG_PATH}:/app/configs
+    ports:
+      - "${TDARR_NODE_PORT:-8267}:8267"
