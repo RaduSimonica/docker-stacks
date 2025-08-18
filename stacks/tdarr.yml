@@ -12,6 +12,7 @@ services:
     volumes:
       - ${TDARR_MOVIES_PATH}:/movies
       - ${TDARR_TV_PATH}:/tv
+      - ${TDARR_CACHE_PATH}:/tdarr_cache
       - ${TDARR_CONFIG_PATH}:/app/configs
     ports:
       - "${TDARR_NODE_PORT:-8267}:8267"
