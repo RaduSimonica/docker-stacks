@@ -15,5 +15,6 @@ services:
       - ${TDARR_TV_PATH}:/tv
       - ${TDARR_CACHE_PATH}:/tdarr_cache
       - ${TDARR_CONFIG_PATH}:/app/configs
+      - ${TDARR_CAMS_PATH}:/cams
     ports:
       - "${TDARR_NODE_PORT:-8267}:8267"
