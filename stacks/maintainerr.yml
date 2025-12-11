@@ -1,0 +1,14 @@
+services:
+    maintainerr:
+        image: ghcr.io/maintainerr/maintainerr:latest
+        container_name: maintainerr
+        user: 1000:1000
+        volumes:
+          - ${MAINTAINERR_DATA_PATH}:/opt/data
+          - ${MAINTAINERR_MOVIES_PATH}:/movies
+          - ${MAINTAINERR_TV_PATH}:/tv
+        environment:
+          - TZ=Europe/Bucharest
+        ports:
+          - ${MAINTAINERR_PORT}:6246
+        restart: unless-stopped
