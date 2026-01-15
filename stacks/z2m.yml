@@ -11,5 +11,3 @@ services:
             - ${PORT_IN}:${PORT_OUT}
         environment:
             - TZ=Europe/Bucharest
-        devices:
-            - ${ZIGBEE}:/dev/ttyACM0
