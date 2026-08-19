@@ -27,5 +27,6 @@ services:
       - "${WEB_RTC_TCP_PORT}:8555/tcp" # WebRTC over tcp
       - "${WEB_RTC_UDP_PORT}:8555/udp" # WebRTC over udp
     environment:
+      TZ: "Europe/Bucharest"
       FRIGATE_RTSP_USER: $FRIGATE_RTSP_USER
       FRIGATE_RTSP_PASSWORD: $FRIGATE_RTSP_PASSWORD
